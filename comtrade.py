@@ -943,9 +943,14 @@ class BinaryDatReader(DatReader):
 
     read_mode = "rb"
 
-    STRUCT_FORMAT = "LL {acount:d}h {dcount:d}H"
-    STRUCT_FORMAT_ANALOG_ONLY = "LL {acount:d}h"
-    STRUCT_FORMAT_STATUS_ONLY = "LL {dcount:d}H"
+    if struct.calcsize("L") == 4:	
+        STRUCT_FORMAT = "LL {acount:d}h {dcount:d}H"
+        STRUCT_FORMAT_ANALOG_ONLY = "LL {acount:d}h"
+        STRUCT_FORMAT_STATUS_ONLY = "LL {dcount:d}H"
+    else:
+        STRUCT_FORMAT = "II {acount:d}h {dcount:d}H"
+        STRUCT_FORMAT_ANALOG_ONLY = "II {acount:d}h"
+        STRUCT_FORMAT_STATUS_ONLY = "II {dcount:d}H"
 
     def get_reader_format(self, analog_channels, status_bytes):
         # Number of status fields of 2 bytes based on the total number of 
