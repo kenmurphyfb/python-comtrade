@@ -859,10 +859,10 @@ class DatReader:
         # TODO: make tests.
         last_sample_rate = None
         for samp, endsamp in self._cfg.sample_rates:
-            if endsamp < n:
-                last_sample_rate = nrates
-            else:
-                break
+            if self._cfg.nrates == 1:
+                last_sample_rate = samp
+            elif endsamp < n:
+                last_sample_rate = nrates            
         return last_sample_rate
 
     def _get_time(self, n, ts_value, time_base, time_mult):
