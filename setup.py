@@ -3,7 +3,7 @@ from distutils.core import setup
 setup(
     name = 'python-comtrade',
     py_modules = ['comtrade'],
-    version = '0.1',  
+    version = '0.2',  
     description = 'A library to import Comtrade waveform file',
     author = 'kenmurphyfb',
     author_email = 'kenmurphy@fb.com',
